@@ -6,7 +6,8 @@
 
        
     <h3>Edit your listing</h3>
-    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT">
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate 
+      class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -14,14 +15,17 @@
           value="<%=listing.title %> "
           type="text"
           class="form-control"
+          required
         />
+       <div class="valid-feedback">Title Looks good!</div>
       </div>
 
       <div class="mb-3">
         <label for="description" class="form-label">description</label>
-        <textarea name="listing[description]" class="form-control">
-<%=listing.description %>  </textarea
+        <textarea name="listing[description]" class="form-control" required>
+<%=listing.description %>   </textarea
         >
+         <div class="invalid-feedback">please enter short description</div>
       </div>
 
       <div class="mb-3">
@@ -31,7 +35,9 @@
           value="<%=listing.image %> "
           type="text"
           class="form-control"
+          required
         />
+             <div class="invalid-feedback">please enter Valid Image Link/URL</div>
       </div>
     
 
@@ -44,7 +50,9 @@
           value="<%=listing.price %> "
           type="number"
           class="form-control"
+          required
         />
+         <div class="invalid-feedback">please enter a valid price</div>
       </div>
 
 
@@ -55,7 +63,9 @@
           value="<%=listing.country %> "
           type="text"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">country should be valid</div>
       </div>
       </div>
       <div class="mb-3">
@@ -65,10 +75,13 @@
           value="<%=listing.location %> "
           type="text"
           class="form-control"
+          required
         />
+        <div class="invalid-feedback">location should be valid</div>
       </div>
       
       <button class="btn btn-dark edit-btn">Edit</button>
     </form>
  </div>
     </div>
+    <script src="/js/script.js"></script>
