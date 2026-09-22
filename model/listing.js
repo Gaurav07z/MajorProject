@@ -19,7 +19,13 @@ image: {
 
 price: Number,
 location: String,
-country: String
+country: String,
+review:[
+    {
+        type: schema.Types.ObjectId,
+        ref: "Review"
+    },
+],
 
 
 });
