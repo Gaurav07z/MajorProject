@@ -20,10 +20,10 @@ image: {
 price: Number,
 location: String,
 country: String,
-review:[
+reviews:[
     {
-        type: schema.Types.ObjectId,
-        ref: "Review"
+        type: Schema.Types.ObjectId,
+        ref: "Review",
     },
 ],
 
@@ -32,4 +32,4 @@ review:[
 
 const Listing = mongoose.model("Listing", listingSchema);
 
-module.exports = Listing
+module.exports = Listing;
