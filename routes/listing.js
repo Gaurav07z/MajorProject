@@ -3,8 +3,9 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const Listing = require("../model/listing.js");
 const { isLoggedIn, isOwner, validatelisting } = require("../middleware.js");
-
 const listingController = require("../controllers/listing.js");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 router
   .route("/")
@@ -15,8 +16,8 @@ router
     wrapAsync(listingController.createListing),
   );
 
-  //New Route
-   router.get("/new", isLoggedIn, listingController.renderNewForm);
+//New Route
+router.get("/new", isLoggedIn, listingController.renderNewForm);
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
@@ -24,20 +25,16 @@ router
     isLoggedIn,
     isOwner,
     validatelisting,
-    wrapAsync(listingController.updateListing)
+    wrapAsync(listingController.updateListing),
   )
-  .delete(
-    isLoggedIn,
-    isOwner,
-    wrapAsync(listingController.destroyListing)
-  );
+  .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
 //Edit Route
 router.get(
   "/:id/edit",
   isLoggedIn,
   isOwner,
-  wrapAsync(listingController.renderEditForm)
+  wrapAsync(listingController.renderEditForm),
 );
 
 module.exports = router;

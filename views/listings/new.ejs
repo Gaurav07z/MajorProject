@@ -5,7 +5,13 @@
 <div class="row mt-3">
   <div class="col-8 offset-2">
     <h3>Create a New listing</h3>
-    <form method="POST" action="/listings" novalidate class="needs-validation">
+    <form
+      method="POST"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
         <input
@@ -15,23 +21,29 @@
           class="form-control"
           required
         />
-          <div class="valid-feedback">Title Looks good!</div>
+        <div class="valid-feedback">Title Looks good!</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control" required ></textarea>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
         <div class="invalid-feedback">please enter short description</div>
       </div>
       <div class="mb-3">
-        <label for="image" class="form-label">image</label>
+        <label for="image" class="form-label">image Link</label>
         <input
           name="listing[image]"
           placeholder="enter image URL/link"
           type="text"
           class="form-control"
         />
-    
-        
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Listing Image</label>
+        <input name="listing[image]" type="file" class="form-control" />
       </div>
       <div class="row">
         <div class="mb-3 col-md-4">
@@ -39,11 +51,10 @@
           <input
             name="listing[price]"
             placeholder="1200"
-            
             class="form-control"
             required
           />
-             <div class="invalid-feedback">please enter a valid price</div>
+          <div class="invalid-feedback">please enter a valid price</div>
         </div>
 
         <div class="mb-3 col-md-8">
@@ -56,7 +67,7 @@
             class="form-control"
             required
           />
-            <div class="invalid-feedback">country should be valid</div>
+          <div class="invalid-feedback">country should be valid</div>
         </div>
       </div>
 
@@ -69,7 +80,7 @@
           class="form-control"
           required
         />
-          <div class="invalid-feedback">location should be valid</div>
+        <div class="invalid-feedback">location should be valid</div>
       </div>
       <br />
       <br />
@@ -78,4 +89,3 @@
     </form>
   </div>
 </div>
-
