@@ -36,12 +36,12 @@ module.exports.createListing = async (req, res, next) => {
   res.redirect("/listings");
 };
 
-module.exports.rederEditForm = async (req, res) => {
+module.exports.renderEditForm = async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   if (!listing) {
-    req.flash("error", "Listing is doesn't exist !");
-    res.redirect("/listings");
+    req.flash("error", "Listing doesn't exist!");
+    return res.redirect("/listings");
   }
   res.render("listings/edit.ejs", { listing });
 };

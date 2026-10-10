@@ -5,7 +5,7 @@
   </div>
   <div class="card col-6 offset-3 show-card listing-card">
     <img
-      src="<%= listing.image.url %>>"
+      src="<%= listing.image.url %>"
       class="card-img-top show-img"
       alt="listing-image"
     />
@@ -27,7 +27,7 @@
      
     </div>
   </div>
-  <% if(currUser && listing.owner._id.equals(currUser._id)){ %>
+  <% if (currUser && listing.owner && listing.owner._id.equals(currUser._id)) { %>
   <div class="btns">
     <a
       href="/listings/<%=listing._id %>/edit"
@@ -75,7 +75,7 @@
 <% for (review of listing.reviews) { %>
       <div class="card col-5 ms-3 mb-3">
          <div class="card-body">
-          <h5 class="card-title">@<% review.author.username %></h5>
+          <h5 class="card-title">@<%= review.author.username %></h5>
           <p class="card-text"><%= review.comment %></p>
           <p class="card-text"><%= review.rating %> Stars</p>
      </div>
